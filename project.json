@@ -1,0 +1,21 @@
+{
+  "overview": "A 4K sticker gallery website where users can browse a rich collection of high-resolution stickers by category, search by name, view full-resolution previews, and upload their own stickers to grow the community collection.",
+  "features": [
+    "Responsive grid gallery with category filter tabs and search",
+    "Full-resolution sticker detail modal with metadata",
+    "Sticker upload form with image file picker and metadata fields",
+    "Internet Identity login for contributor attribution",
+    "Persistent sticker storage using platform file storage",
+    "Sample stickers preloaded on first launch"
+  ],
+  "category": "gallery-media",
+  "tags": [
+    "stickers",
+    "gallery",
+    "4k",
+    "upload",
+    "community",
+    "images"
+  ],
+  "last_updated": "2026-04-21T06:24:29.789Z"
+}

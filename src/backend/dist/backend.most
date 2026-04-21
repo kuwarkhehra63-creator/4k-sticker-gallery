@@ -1,0 +1,27 @@
+// Version: 1.0.0
+type ExternalBlob__671167343 = Blob;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type StickerCategory__671613712 = StickerCategory__878032712;
+type StickerCategory__878032712 = {#Abstract; #Art; #Nature; #Other; #Tech};
+type StickerInternal__101425868 =
+  {
+    blob : ExternalBlob__671167343;
+    category : StickerCategory__671613712;
+    description : Text;
+    id : Nat;
+    name : Text;
+    uploadDate : Timestamp__779343286;
+    uploaderPrincipal : Principal
+  };
+type Timestamp__301639476 = Int;
+type Timestamp__779343286 = Timestamp__301639476;
+actor {
+  stable var seeded : Bool;
+  stable stickers :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?StickerInternal__101425868]];
+      var elementIndex : Nat__490723111
+    }
+};

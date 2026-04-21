@@ -1,0 +1,48 @@
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type Timestamp = int;
+type StickerCategory = 
+ variant {
+   Abstract;
+   Art;
+   Nature;
+   Other;
+   Tech;
+ };
+type Sticker = 
+ record {
+   "blob": ExternalBlob;
+   category: StickerCategory;
+   description: text;
+   id: nat;
+   name: text;
+   uploadDate: Timestamp;
+   uploaderPrincipal: principal;
+ };
+type ExternalBlob = blob;
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  addSticker: (name: text, category: StickerCategory, description: text,
+   "blob": ExternalBlob) -> (nat);
+  getStickerById: (id: nat) -> (opt Sticker) query;
+  getStickers: () -> (vec Sticker) query;
+}
